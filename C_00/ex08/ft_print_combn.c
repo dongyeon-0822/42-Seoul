@@ -6,32 +6,45 @@
 /*   By: donkang <donkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 21:53:49 by donkang           #+#    #+#             */
-/*   Updated: 2022/01/08 08:42:29 by donkang          ###   ########.fr       */
+/*   Updated: 2022/01/08 21:29:18 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	g_data[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-int	g_flag[10] = {0,};
-int	flag[10];
-int 	combination(10, r)
+char	g_data[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+char	g_flag[10] = {'0',};
+
+void	combination(int r, int index, int depth)
 {
-	if (r == 10)
+	int i;
+
+	if (depth == r)
 	{
-		int	i;
 		i = -1;
-		while (++i < 10)
+		while (++i < r)
 		{
-			flag[i] = 1;
+			write(1, &g_flag[i], 1);
+		}
+		write(1, "\n", 1);
+		return;
+	}
+	else
+	{
+		i = index - 1;
+		while(++i < 10)
+		{
+			g_flag[depth] = g_data[i];
+			combination(r, i + 1, depth + 1);
 		}
 	}
 }
 void	ft_print_combn(int n)
 {
-	if (n > 0)
-	{
-		ft_print_combn(--n);
-		
-	}	
+	combination(n, 0, 0);
+}
+int	main(void)
+{
+	ft_print_combn(3);	
+	return (0);
 }
