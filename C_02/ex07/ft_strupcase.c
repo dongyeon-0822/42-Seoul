@@ -6,21 +6,20 @@
 /*   By: donkang <donkang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:23:29 by donkang           #+#    #+#             */
-/*   Updated: 2022/01/10 18:23:31 by donkang          ###   ########.fr       */
+/*   Updated: 2022/01/11 14:44:11 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-char    *ft_strupcase(char *str)
+char	*ft_strupcase(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i] != '\0')
-    {
-        if (str[i] >= 'a' || str[i] <= 'z')
-            str[i] -= 32;
-    }
-    return (str);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 'a' || str[i] <= 'z')
+			str[i] -= 32;
+		i++;
+	}
+	return (str);
 }

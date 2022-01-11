@@ -6,21 +6,20 @@
 /*   By: donkang <donkang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:16:05 by donkang           #+#    #+#             */
-/*   Updated: 2022/01/10 18:16:07 by donkang          ###   ########.fr       */
+/*   Updated: 2022/01/11 15:27:56 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int ft_str_is_printable(char *str)
+int	ft_str_is_printable(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i] != '\0')
-    {
-        if ((str[i] >= 0 && str[i] <= 31 )|| str[i] == 127)
-            return (0);
-    }
-    return (1);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] <= 31 || str[i] >= 127)
+			return (0);
+		i++;
+	}
+	return (1);
 }

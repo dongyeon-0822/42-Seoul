@@ -6,21 +6,20 @@
 /*   By: donkang <donkang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:13:58 by donkang           #+#    #+#             */
-/*   Updated: 2022/01/10 18:14:00 by donkang          ###   ########.fr       */
+/*   Updated: 2022/01/11 14:44:55 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int ft_str_is_uppercase(char *str)
+int	ft_str_is_uppercase(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i] != '\0')
-    {
-        if (str[i] <= 'A' || str[i] >= 'Z')
-            return (0);
-    }
-    return (1);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] < 'A' || str[i] > 'Z')
+			return (0);
+		i++;
+	}
+	return (1);
 }
