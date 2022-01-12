@@ -12,11 +12,11 @@
 
 #include <unistd.h>
 
-void	print_addr(unsigned long long *addr, unsigned int cnt)
+void	print_addr(unsigned long long addr, unsigned int cnt)
 {
 	if (addr != 0)
 	{
-		addr_hex(addr / 16, cnt - 1);
+		print_addr(addr / 16, cnt - 1);
 		write(1, &"0123456789abcdef"[addr % 16], 1);
 	}
 	else
@@ -36,7 +36,6 @@ void	print_hex(char *str)
 	{
 		if (!*str)
 		{
-			write(1, " ", 1);
 			break ;
 		}
 		write(1, &"0123456789abcdef"[*str / 16], 1);
@@ -49,7 +48,7 @@ void	print_hex(char *str)
 	{
 		write(1, "  ", 2);
 		if (cnt % 2 == 0)
-			ft_putchar(' ');
+			write(1, "  ", 1);
 		cnt--;
 	}
 }
@@ -79,12 +78,13 @@ void	*ft_print_memory(void *addr, unsigned int size)
 
 	buf = (char *)addr;
 	bit = 0;
-	while (*buf && bit < size)
+	while (bit < size)
 	{
 		print_addr((unsigned long long)buf, 16);
 		print_hex(buf);
 		print_str(buf);
 		buf += 16;
 		bit += 16;
-	}	
+	}
+	return (addr);
 }
