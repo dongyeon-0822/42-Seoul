@@ -25,9 +25,9 @@ char	*ft_strstr(char *str, char *to_find)
 	int	i;
 	int	j;
 
-	i = 0;
 	if (!ft_strlen(to_find))
 		return (str);
+	i = 0;
 	while (str[i])
 	{
 		j = 0;

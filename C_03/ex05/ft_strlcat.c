@@ -29,19 +29,13 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	destsize = ft_strlen(dest);
 	srcsize = ft_strlen(src);
 	idx = 0;
-	while (*dest)
-	{
-		dest++;
-		idx++;
-	}
-	while (*src && idx + 1 < size)
-	{
-		*dest++ = *src++;
-		idx++;
-	}
-	*dest = '\0';
-	if (destsize > size)
+	if (destsize >= size)
 		return (srcsize + size);
-	else
-		return (srcsize + destsize);
+	while (src[idx] && destsize + idx + 1 < size)
+	{
+		dest[destsize + idx] = src[idx];
+		idx++;
+	}
+	dest[destsize + idx] = '\0';
+	return (srcsize + destsize);
 }
