@@ -1,60 +1,63 @@
 #include <unistd.h>
 
-void	ft_putchar(char c)
+int	ft_strlen(char *str)
 {
-	write(1, &c, 1);
-}
-
-void	print_base(int n, char *base, int len)
-{
-	if (n >= len)
-		print_base(n / len, base, len);
-	ft_putchar(base[n % len]);
-}
-
-int	check_base(char *base)
-{
-	int	arr[256];
 	int	i;
 
 	i = 0;
-	while (i < 256)
-	{
-		arr[i] = 0;
+	while (str[i])
 		i++;
-	}
+	return (i);
+}
+
+int	is_correct(char *base)
+{
+	int	i;
+	int	j;
+
+	if (ft_strlen(base) <= 1)
+		return (0);
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == '+' || base[i] == '-' || arr[(int)base[i]] == 1)
+		if (base[i] == '+' || base[i] == '-')
 			return (0);
-		arr[(int)base[i]] = 1;
+		j = i + 1;
+		while (base[j])
+		{
+			if (base[i] == base[j])
+				return (0);
+			j++;
+		}
 		i++;
 	}
-	if (i <= 1)
-		return (0);
-	return (i);
+	return (1);
 }
 
 void	ft_putnbr_base(int nbr, char *base)
 {
 	int	len;
 
-	len = check_base(base);
-	if (len == 0)
+	len = ft_strlen(base);
+	if (!is_correct(base))
 		return ;
 	if (nbr == -2147483648)
 	{
-		ft_putchar('-');
-		nbr *= -1;
-		print_base(nbr / len, base, len);
-		ft_putchar(base[nbr % len]);
+		write(1, "-", 1);
+		ft_putnbr_base(2147483648 / len, base);
+		ft_putnbr_base(2147483648 % len, base);
 		return ;
 	}
 	if (nbr < 0)
 	{
-		ft_putchar('-');
-		nbr = nbr * -1;
+		write(1, "-", 1);
+		nbr *= -1;
 	}
-	print_base(nbr, base, len);
+	if (nbr < len)
+	{
+		write(1, &base[nbr], 1);
+		return ;
+	}
+	ft_putnbr_base(nbr / len, base);
+	ft_putnbr_base(nbr % len, base);
 }
