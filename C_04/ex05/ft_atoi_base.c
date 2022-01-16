@@ -1,42 +1,38 @@
-int	check(char c)
+int	ft_strlen(char *str)
 {
-	if (c == ' ' || c == '\n')
-		return (1);
-	else if (c == '\t' || c == '\v')
-		return (1);
-	else if (c == '\f' || c == '\r')
-		return (1);
-	else
-		return (0);
-}
-
-int	check_base(char *base)
-{
-	int	arr[256];
 	int	i;
 
 	i = 0;
-	while (i < 256)
-	{
-		arr[i] = 0;
+	while (str[i])
 		i++;
-	}
-	i = 0;
-	while (base[i])
-	{
-		if (base[i] == '+' || base[i] == '-' || arr[(int)base[i]] == 1)
-			return (0);
-		if (check((int)base[i]))
-			return (0);
-		arr[(int)base[i]] = 1;
-		i++;
-	}
-	if (i <= 1)
-		return (0);
 	return (i);
 }
 
-int	find(char *str, char c)
+int	is_correct(char *base)
+{
+	int	i;
+	int	j;
+
+	if (ft_strlen(base) <= 1)
+		return (0);
+	i = 0;
+	while (base[i])
+	{
+		if (base[i] == '+' || base[i] == '-')
+			return (0);
+		j = i + 1;
+		while (base[j])
+		{
+			if (base[i] == base[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	find_loc(char *str, char c)
 {
 	int	i;
 
@@ -52,28 +48,28 @@ int	find(char *str, char c)
 
 int	ft_atoi_base(char *str, char *base)
 {
-	int	len;
 	int	i;
 	int	flag;
-	int	answer;
+	int	result;
+	int	len;
 
-	len = check_base(base);
 	i = 0;
 	flag = 1;
-	answer = 0;
-	while (check(str[i]))
+	result = 0;
+	len = ft_strlen(base);
+	if (!is_correct(base))
+		return ;
+	while (str[i] <= 32)
 		i++;
-	while (str[i] == '-' || str[i] == '+')
+	while (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i++] == '-')
-		{
 			flag *= -1;
-		}
 	}
-	while (str[i] != '\0' && find(base, str[i]) != -1)
+	while (str[i] != '\0' && find_loc(base, str[i]) != -1)
 	{
-		answer *= len;
-		answer += find(base, str[i++]);
+		result *= len;
+		result += find_loc(base, str[i++]);
 	}
-	return (answer * flag);
+	return (result * flag);
 }
