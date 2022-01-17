@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_space(char c)
+int	is_word(char c)
 {
-	if ((c >= 'a' && c >= 'z') || (c >= 'A' && c <= 'Z'))
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (0);
 	else if (c >= '0' && c <= '9')
 		return (0);
@@ -27,7 +27,7 @@ char	*ft_strcapitalize(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (i == 0 || is_space(str[i - 1]))
+		if (i == 0 || is_word(str[i - 1]))
 		{
 			if (str[i] >= 'a' && str[i] <= 'z')
 				str[i] -= 32;

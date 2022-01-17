@@ -3,70 +3,74 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_memory.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: donkang <donkang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: donkang <donkang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 21:45:50 by donkang           #+#    #+#             */
-/*   Updated: 2022/01/12 01:51:46 by donkang          ###   ########.fr       */
+/*   Created: 2022/01/17 13:05:57 by donkang           #+#    #+#             */
+/*   Updated: 2022/01/17 13:06:34 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
 void	print_addr(unsigned long long addr, unsigned int cnt)
 {
 	if (addr != 0)
 	{
-		print_addr(addr / 16, cnt - 1);
-		write(1, &"0123456789abcdef"[addr % 16], 1);
+		print_addr(addr / 16, cnt + 1);
+		ft_putchar("0123456789abcdef"[addr % 16]);
 	}
 	else
 	{
-		while (cnt-- > 0)
-			write(1, "0", 1);
-	}
-}
-
-void	print_hex(char *str)
-{
-	int	cnt;
-
-	cnt = 16;
-	write(1, ": ", 2);
-	while (--cnt >= 0)
-	{
-		if (!*str)
+		while (cnt < 16)
 		{
-			break ;
+			ft_putchar('0');
+			cnt ++;
 		}
-		write(1, &"0123456789abcdef"[*str / 16], 1);
-		write(1, &"0123456789abcdef"[*str % 16], 1);
-		if (cnt % 2 == 0)
-			write(1, " ", 1);
-		str++;
-	}
-	while (cnt >= 0)
-	{
-		write(1, "  ", 2);
-		if (cnt % 2 == 0)
-			write(1, "  ", 1);
-		cnt--;
 	}
 }
 
-void	print_str(char *str)
+void	print_hex(unsigned char *addr, unsigned int len)
 {
-	int	cnt;
+	unsigned int	i;
 
-	cnt = 16;
-	while (--cnt >= 0)
+	i = 0;
+	ft_putchar(':');
+	while (i < len)
 	{
-		if (!*str)
-			break ;
+		if (i % 2 == 0)
+			ft_putchar(' ');
+		ft_putchar("0123456789abcdef"[(int)addr[i] / 16]);
+		ft_putchar("0123456789abcdef"[(int)addr[i] % 16]);
+		i++;
+	}
+	while (i < 16)
+	{
+		if (i % 2 == 0)
+			ft_putchar(' ');
+		write(1, "  ", 2);
+		i++;
+	}
+}
+
+void	print_str(char *str, unsigned int len)
+{
+	unsigned int	i;
+
+	i = 0;
+	ft_putchar(' ');
+	while (i < len)
+	{
 		if (*str <= 31 || *str >= 127)
 			write(1, ".", 1);
 		else
 			write(1, str, 1);
 		str++;
+		i++;
 	}
 	write(1, "\n", 1);
 }
@@ -74,17 +78,20 @@ void	print_str(char *str)
 void	*ft_print_memory(void *addr, unsigned int size)
 {
 	unsigned int	bit;
-	char			*buf;
+	unsigned int	buf;
 
-	buf = (char *)addr;
 	bit = 0;
-	while (bit < size)
+	while (size > 0)
 	{
-		print_addr((unsigned long long)buf, 16);
-		print_hex(buf);
-		print_str(buf);
-		buf += 16;
+		if (size > 16)
+			buf = 16;
+		else
+			buf = size;
+		print_addr((unsigned long long)addr + bit, 0);
+		print_hex((unsigned char *)addr + bit, buf);
+		print_str((char *)addr + bit, buf);
 		bit += 16;
+		size -= buf;
 	}
 	return (addr);
 }
