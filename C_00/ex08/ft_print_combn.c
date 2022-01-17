@@ -13,15 +13,17 @@
 #include <unistd.h>
 
 char	g_data[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-char	g_flag[10] = {'0',};
-int	g_cnt = 0;
+char	g_flag[10] = {'0'};
+int		g_cnt;
 
 int	cnt_comb(int n)
 {
-	int	a, b;
-	int	x, y;
+	int	a;
+	int	b;
+	int	x;
+	int	y;
 	int	i;
-	
+
 	a = 1;
 	b = 1;
 	x = 10;
@@ -30,15 +32,14 @@ int	cnt_comb(int n)
 	while (++i < n)
 	{
 		a *= x--;
-		b *= y--;	
+		b *= y--;
 	}
-
-	return (a/b);
+	return (a / b);
 }
 
 void	combination(int r, int index, int depth, int cnt)
 {
-	int i;
+	int	i;
 
 	if (depth == r)
 	{
@@ -47,26 +48,24 @@ void	combination(int r, int index, int depth, int cnt)
 			write(1, &g_flag[i], 1);
 		if (++g_cnt < cnt)
 			write(1, ", ", 2);
-		return;
+		return ;
 	}
 	else
 	{
 		i = index - 1;
-		while(++i < 10)
+		while (++i < 10)
 		{
 			g_flag[depth] = g_data[i];
 			combination(r, i + 1, depth + 1, cnt);
 		}
 	}
 }
+
 void	ft_print_combn(int n)
 {	
 	int	cnt;
+
+	g_cnt = 0;
 	cnt = cnt_comb(n);
 	combination(n, 0, 0, cnt);
-}
-int	main(void)
-{
-	ft_print_combn(3);	
-	return (0);
 }
