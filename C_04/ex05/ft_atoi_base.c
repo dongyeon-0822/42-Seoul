@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: donkang <donkang@student.42seoul.k>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/16 14:48:55 by donkang           #+#    #+#             */
+/*   Updated: 2022/01/16 14:49:00 by donkang          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -58,7 +70,7 @@ int	ft_atoi_base(char *str, char *base)
 	result = 0;
 	len = ft_strlen(base);
 	if (!is_correct(base))
-		return ;
+		return (0);
 	while (str[i] <= 32)
 		i++;
 	while (str[i] == '+' || str[i] == '-')

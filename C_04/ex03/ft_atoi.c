@@ -6,11 +6,11 @@
 /*   By: donkang <donkang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 15:16:18 by donkang           #+#    #+#             */
-/*   Updated: 2022/01/14 15:23:58 by donkang          ###   ########.fr       */
+/*   Updated: 2022/01/14 15:59:16 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_atoi(char* str)
+int	ft_atoi(char *str)
 {
 	int	i;
 	int	flag;
@@ -27,7 +27,7 @@ int ft_atoi(char* str)
 			flag *= -1;
 		i++;
 	}
-	while (str[i] != '\0' && str[i] >='0' && str[i] <='9')
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
 	{
 		result *= 10;
 		result += str[i] - '0';
