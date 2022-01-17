@@ -1,21 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: donkang <donkang@student.42seoul.k>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/17 13:22:15 by donkang           #+#    #+#             */
+/*   Updated: 2022/01/17 13:23:47 by donkang          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include <unistd.h>
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    int i;
-    int j;
-    
-    i = ac - 1;
-    if (ac > 1)
-    {
-        while (i > 0)
-        {
-            j = 0;
-            while (av[i][j])
-                write(1, &av[i][j++], 1);
-            write(1, "\n", 1);
-            i--;
-        }
-    }
-    return (0);
+	int	i;
+	int	j;
+
+	i = ac - 1;
+	if (ac > 1)
+	{
+		while (i > 0)
+		{
+			j = 0;
+			while (av[i][j])
+				write(1, &av[i][j++], 1);
+			write(1, "\n", 1);
+			i--;
+		}
+	}
+	return (0);
 }

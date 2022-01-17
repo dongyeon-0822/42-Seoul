@@ -1,15 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: donkang <donkang@student.42seoul.k>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/17 13:16:19 by donkang           #+#    #+#             */
+/*   Updated: 2022/01/17 13:19:03 by donkang          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include <unistd.h>
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    int i;
-    
-    i = 0;
-    if (ac >= 1)
-    {
-        while (av[0][i])
-            write(1, &av[0][i++], 1);
-        write(1, "\n", 1);
-    }
-    return (0);
+	int	i;
+
+	i = 0;
+	if (ac >= 1)
+	{
+		while (av[0][i])
+			write(1, &av[0][i++], 1);
+		write(1, "\n", 1);
+	}
+	return (0);
 }
