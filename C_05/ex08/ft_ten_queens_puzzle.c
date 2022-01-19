@@ -23,8 +23,8 @@ int	ft_abs(int a)
 
 void	print_chess(int *chess)
 {
-	int	i;
 	char	c;
+	int		i;
 
 	i = 0;
 	while (++i <= 10)
@@ -38,11 +38,13 @@ void	print_chess(int *chess)
 int	is_promising(int row, int *chess)
 {
 	int	i;
-	
+
 	i = 0;
 	while (++i < row)
 	{
-		if ((chess[row] == chess[i]) || ft_abs(chess[row] - chess[i]) == (row - i))
+		if (chess[row] == chess[i])
+			return (0);
+		if (ft_abs(chess[row] - chess[i]) == (row - i))
 			return (0);
 	}
 	return (1);
@@ -51,7 +53,7 @@ int	is_promising(int row, int *chess)
 void	queens(int row, int *chess)
 {
 	int	i;
-	
+
 	if (is_promising(row, chess))
 	{
 		if (row == 10)
@@ -75,7 +77,7 @@ int	ft_ten_queens_puzzle(void)
 {
 	int	chess[11];
 	int	i;
-	
+
 	g_cnt = 0;
 	i = -1;
 	while (++i < 11)
