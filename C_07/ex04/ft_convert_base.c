@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donkang <donkang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/16 14:48:55 by donkang           #+#    #+#             */
-/*   Updated: 2022/01/16 14:49:00 by donkang          ###   ########.fr       */
+/*   Created: 2022/01/17 18:31:01 by donkang           #+#    #+#             */
+/*   Updated: 2022/01/22 21:46:57 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 int	ft_strlen(char *str)
 {
@@ -32,12 +34,10 @@ int	is_correct(char *base)
 	{
 		if (base[i] == '+' || base[i] == '-')
 			return (0);
-		if ((base[i] >= 9 && base[i] <= 13) || base[i] == 32)
-			return (0);
 		j = i + 1;
 		while (base[j])
 		{
-			if (i != j && base[i] == base[j])
+			if (base[i] == base[j])
 				return (0);
 			j++;
 		}
@@ -73,7 +73,7 @@ int	ft_atoi_base(char *str, char *base)
 	len = ft_strlen(base);
 	if (!is_correct(base))
 		return (0);
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+	while (str[i] <= 32)
 		i++;
 	while (str[i] == '+' || str[i] == '-')
 	{
@@ -86,4 +86,16 @@ int	ft_atoi_base(char *str, char *base)
 		result += find_loc(base, str[i++]);
 	}
 	return (result * flag);
+}
+
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
+{
+    int		tmp;
+	char	*str;
+	
+	if (!is_correct(base_from) || !is_correct(base_to)
+			return (0);		
+	tmp = ft_atoi_base(nbr, base_from);
+	str = ft_putnbr_base(tmp, base_to);
+	return (str);
 }
