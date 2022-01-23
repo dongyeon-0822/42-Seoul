@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+int	nbr_len(int nbr, int base_len);
+char	*ft_putnbr_base(int nbr, char *base);
 
 int	ft_strlen(char *str)
 {
@@ -33,6 +35,8 @@ int	is_correct(char *base)
 	while (base[i])
 	{
 		if (base[i] == '+' || base[i] == '-')
+			return (0);
+		if ((base[i] >= 9 && base[i] <= 13) || base[i] == 32)
 			return (0);
 		j = i + 1;
 		while (base[j])
@@ -73,7 +77,7 @@ int	ft_atoi_base(char *str, char *base)
 	len = ft_strlen(base);
 	if (!is_correct(base))
 		return (0);
-	while (str[i] <= 32)
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	while (str[i] == '+' || str[i] == '-')
 	{
@@ -93,7 +97,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
     int		tmp;
 	char	*str;
 	
-	if (!is_correct(base_from) || !is_correct(base_to)
+	if (!is_correct(base_from) || !is_correct(base_to))
 			return (0);		
 	tmp = ft_atoi_base(nbr, base_from);
 	str = ft_putnbr_base(tmp, base_to);
