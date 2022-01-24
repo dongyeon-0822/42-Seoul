@@ -50,15 +50,13 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 			len += ft_strlen(sep);
 	}
 	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (str == NULL)
-		return (0);
+	*str = '\0';
 	i = -1;
 	while (++i < size)
 	{
-		ft_strcat(str, strs[i]);
+		str = ft_strcat(str, strs[i]);
 		if (i != size - 1)
-			ft_strcat(str, sep);
+			str = ft_strcat(str, sep);
 	}
-	str[len] = '\0';
 	return (str);
 }

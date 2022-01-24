@@ -6,12 +6,12 @@
 /*   By: donkang <donkang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:31:01 by donkang           #+#    #+#             */
-/*   Updated: 2022/01/22 21:46:57 by donkang          ###   ########.fr       */
+/*   Updated: 2022/01/23 19:03:57 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-int	nbr_len(int nbr, int base_len);
+int		nbr_len(int nbr, int base_len);
 char	*ft_putnbr_base(int nbr, char *base);
 
 int	ft_strlen(char *str)
@@ -94,11 +94,11 @@ int	ft_atoi_base(char *str, char *base)
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-    int		tmp;
+	int		tmp;
 	char	*str;
-	
+
 	if (!is_correct(base_from) || !is_correct(base_to))
-			return (0);		
+		return (0);
 	tmp = ft_atoi_base(nbr, base_from);
 	str = ft_putnbr_base(tmp, base_to);
 	return (str);
