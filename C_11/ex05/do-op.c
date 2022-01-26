@@ -12,14 +12,14 @@
 
 #include <unistd.h>
 
-int	calc_sum(int a, int b);
-int	calc_sub(int a, int b);
-int	calc_mul(int a, int b);
-int	calc_div(int a, int b);
-int	calc_mod(int a, int b);
+int		calc_sum(int a, int b);
+int		calc_sub(int a, int b);
+int		calc_mul(int a, int b);
+int		calc_div(int a, int b);
+int		calc_mod(int a, int b);
 void	ft_putchar(char c);
 void	ft_putnbr(int nb);
-int	ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 
 int	ft_atoi(char *str)
 {
@@ -90,7 +90,7 @@ int	main(int ac, char **av)
 	int		b;
 	char	*op;
 	int		result;
-	
+
 	if (ac == 4)
 	{
 		a = ft_atoi(av[1]);

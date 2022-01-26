@@ -36,7 +36,7 @@ int	ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-void	ft_advanced_sort_string_tab(char **tab, int(*cmp)(char *, char *))
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
 {
 	char	*tmp;
 	int		min_idx;
