@@ -2,19 +2,10 @@ CC=gcc
 CFLAGS= -Wall -Wextra -Werror
 TARGET=do-op
 
-SRCDIR=srcs
-INCDIR=includes
+.PHONY: clean all
 
-SRCS=$(SRCSDIR)/*.c
-OBJS=$(SRCS:.c=.o)
- 
-all: $(TARGET)
- 
-%.o : %.c
-    $(CC) $(CFLAGS) -c $< -o $@ -I $(INCDIR)
- 
-$(TARGET): $(OBJS)
-    $(CC) $(CFLAGS) -o $@ $^
- 
+all: 
+    $(CC) $(CFLAGS) -o $(TARGET) do-op.c calc.c ft_func.c
+
 clean:
-    rm -f $(SRCSDIR)/*.o
+    rm -f *.o

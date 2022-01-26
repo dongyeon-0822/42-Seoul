@@ -1,23 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_string_tab.c                               :+:      :+:    :+:   */
+/*   ft_func.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: donkang <donkang@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: donkang <donkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 20:21:28 by donkang           #+#    #+#             */
-/*   Updated: 2022/01/26 20:32:07 by donkang          ###   ########.fr       */
+/*   Created: 2022/01/27 01:47:18 by donkang           #+#    #+#             */
+/*   Updated: 2022/01/27 01:47:20 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char **str)
-{
-	int	cnt;
+#include <unistd.h>
 
-	cnt = 0;
-	while (*str++)
-		cnt++;
-	return (cnt);
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
+	if (nb == -2147483648)
+		write(1, "-2147483648", 11);
+	else
+	{
+		if (nb < 0)
+		{
+			ft_putchar('-');
+			nb *= -1;
+		}
+		if (nb >= 10)
+		{
+			ft_putnbr(nb / 10);
+			nb %= 10;
+		}
+		if (nb < 10)
+			ft_putchar(nb + '0');
+	}
 }
 
 int	ft_strcmp(char *s1, char *s2)
@@ -34,30 +52,4 @@ int	ft_strcmp(char *s1, char *s2)
 		i++;
 	}
 	return (0);
-}
-
-void	ft_sort_string_tab(char **tab)
-{
-	char	*tmp;
-	int		min_idx;
-	int		i;
-	int		j;
-	int		size;
-
-	size = ft_strlen(tab);
-	i = 0;
-	while (i < size - 1)
-	{
-		min_idx = i;
-		j = i;
-		while (++j < size)
-		{
-			if (ft_strcmp(tab[j], tab[min_idx]) < 0)
-				min_idx = j;
-		}
-		tmp = tab[i];
-		tab[i] = tab[min_idx];
-		tab[min_idx] = tmp;
-		i++;
-	}
 }

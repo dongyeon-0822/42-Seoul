@@ -12,31 +12,14 @@
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
-		write(1, "-2147483648", 11);
-	else
-	{
-		if (nb < 0)
-		{
-			ft_putchar('-');
-			nb *= -1;
-		}
-		if (nb >= 10)
-		{
-			ft_putnbr(nb / 10);
-			nb %= 10;
-		}
-		if (nb < 10)
-			ft_putchar(nb + '0');
-	}
-}
+int	calc_sum(int a, int b);
+int	calc_sub(int a, int b);
+int	calc_mul(int a, int b);
+int	calc_div(int a, int b);
+int	calc_mod(int a, int b);
+void	ft_putchar(char c);
+void	ft_putnbr(int nb);
+int	ft_strcmp(char *s1, char *s2);
 
 int	ft_atoi(char *str)
 {
@@ -64,46 +47,67 @@ int	ft_atoi(char *str)
 	return (result * flag);
 }
 
-int	do_op(int a, int b, char op)
+int	calc_op(char *op)
 {
-	if (op == '+')
-		return (a + b);
-	else if (op == '-')
-		return (a - b);
-	else if (op == '*')
-		return (a * b);
-	else if (op == '/')
-		return (a / b);
-	else if (op == '%')
-		return (a % b);
-	else
+	if (!ft_strcmp(op, "+"))
 		return (0);
+	else if (!ft_strcmp(op, "-"))
+		return (1);
+	else if (!ft_strcmp(op, "*"))
+		return (2);
+	else if (!ft_strcmp(op, "/"))
+		return (3);
+	else if (!ft_strcmp(op, "%"))
+		return (4);
+	else
+		return (-1);
+}
+
+int	do_op(int a, int b, char *op)
+{
+	int	(*calc[5])(int x, int y);
+	int	operator;
+
+	calc[0] = calc_sum;
+	calc[1] = calc_sub;
+	calc[2] = calc_mul;
+	calc[3] = calc_div;
+	calc[4] = calc_mod;
+	operator = calc_op(op);
+	if (operator < 0)
+		return (0);
+	else if (operator == 3 && b == 0)
+		return (-1);
+	else if (operator == 4 && b == 0)
+		return (-2);
+	else
+		return ((*calc[operator])(a, b));
 }
 
 int	main(int ac, char **av)
 {
 	int		a;
 	int		b;
-	char	op;
+	char	*op;
 	int		result;
-
-	result = 0;
+	
 	if (ac == 4)
 	{
 		a = ft_atoi(av[1]);
 		b = ft_atoi(av[3]);
-		op = av[2][0];
-		if (b == 0 && op == '/')
+		op = av[2];
+		result = do_op(a, b, op);
+		if (result == -1)
 		{
 			write(1, "Stop : division by zero\n", 24);
 			return (0);
 		}
-		if (b == 0 && op == '%')
+		if (result == -2)
 		{
 			write(1, "Stop : modulo by zero\n", 22);
 			return (0);
 		}
-		ft_putnbr(do_op(a, b, op));
+		ft_putnbr(result);
 		write(1, "\n", 1);
 	}
 	return (0);

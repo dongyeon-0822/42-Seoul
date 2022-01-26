@@ -12,13 +12,11 @@
 
 int	ft_any(char **tab, int(*f)(char*))
 {
-	int	i;
-
-	i = 0;
-	while (tab[i])
+	while (*tab)
 	{
-		if (f(tab[i++]) != 0)
+		if (f(*tab) != 0)
 			return (1);
+		tab++;
 	}
 	return (0);
 }

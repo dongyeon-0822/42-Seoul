@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_sort.c                                       :+:      :+:    :+:   */
+/*   calc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: donkang <donkang@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: donkang <donkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 15:25:44 by donkang           #+#    #+#             */
-/*   Updated: 2022/01/26 16:26:09 by donkang          ###   ########.fr       */
+/*   Created: 2022/01/27 01:43:03 by donkang           #+#    #+#             */
+/*   Updated: 2022/01/27 01:43:11 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_sort(int *tab, int length, int(*f)(int, int))
+int	calc_sum(int a, int b)
 {
-	int	i;
+	return (a + b);
+}
 
-	i = 1;
-	while (i < length)
-	{
-		if (f(tab[i - 1], tab[i]) > 0)
-			return (0);
-	}
-	return (1);
+int	calc_sub(int a, int b)
+{
+	return (a - b);
+}
+
+int	calc_mul(int a, int b)
+{
+	return (a * b);
+}
+
+int	calc_div(int a, int b)
+{
+	return (a / b);
+}
+
+int	calc_mod(int a, int b)
+{
+	return (a % b);
 }
