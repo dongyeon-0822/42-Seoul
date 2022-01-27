@@ -1,4 +1,4 @@
 #!/bin/sh
 gcc -c -Wall -Wextra -Werror *.c;
-ar rv libft.a *.o
+ar cr libft.a *.o
 rm *.o
