@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *dest, int value, size_t size)
+void	*ft_memset(void *dest, int value, size_t num)
 {
-	unsigned char	*temp;
+	unsigned char	*tmp;
 
-	temp = (unsigned char *)dest;
-	while (size--)
-		*temp++ = (unsigned char)value;
+	tmp = (unsigned char *)dest;
+	while (num--)
+		*tmp++ = (unsigned char)value;
 	return (dest);
 }
 
-void	*ft_bzero(void *dest, size_t len)
+void	*ft_bzero(void *dest, size_t num)
 {
-	ft_memset(dest, 0, len);
+	ft_memset(dest, 0, num);
 }
