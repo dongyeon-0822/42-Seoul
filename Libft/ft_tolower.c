@@ -6,15 +6,13 @@
 /*   By: donkang <donkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 23:56:58 by donkang           #+#    #+#             */
-/*   Updated: 2022/04/15 23:59:10 by donkang          ###   ########.fr       */
+/*   Updated: 2022/04/16 00:02:59 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_tolower(int c)
 {
 	if ((c >= 'A') && (c <= 'Z'))
-    {
-        c = c - 'A' + 'a';
-    }
-    return c;
+		c += 32;
+	return (c);
 }
