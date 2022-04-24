@@ -6,7 +6,7 @@
 /*   By: donkang <donkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 23:54:34 by donkang           #+#    #+#             */
-/*   Updated: 2022/03/31 23:32:21 by donkang          ###   ########.fr       */
+/*   Updated: 2022/04/24 18:29:05 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	*ft_memset(void *dest, int value, size_t num)
 {
-	unsigned char	*tmp;
+	size_t	i;
 
-	tmp = (unsigned char *)dest;
-	while (num--)
-		*tmp++ = (unsigned char)value;
+	i = 0;
+	while (i < num)
+	{
+		*((unsigned char *)dest + i) = value;
+		i++;
+	}
 	return (dest);
 }
