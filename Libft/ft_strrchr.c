@@ -6,7 +6,7 @@
 /*   By: donkang <donkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 14:42:57 by donkang           #+#    #+#             */
-/*   Updated: 2022/04/17 15:21:39 by donkang          ###   ########.fr       */
+/*   Updated: 2022/04/24 18:58:34 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	len;
+	int	len;
 
 	len = ft_strlen(s);
 	if (!c)

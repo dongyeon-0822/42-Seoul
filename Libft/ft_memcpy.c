@@ -6,7 +6,7 @@
 /*   By: donkang <donkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 22:54:11 by donkang           #+#    #+#             */
-/*   Updated: 2022/04/16 00:32:00 by donkang          ###   ########.fr       */
+/*   Updated: 2022/04/24 18:37:31 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 void	*memcpy(void *dest, const void *src, size_t num)
 {
-	unsigned char	*dest_p;
-	unsigned char	*src_p;
+	char	*p_dest;
+	char	*p_src;
+	size_t	i;
 
-	dest_p = (unsigned char *)dest;
-	src_p = (unsigned char *)src;
-	if (dest == NULL && src == NULL)
+	if (dest == src)
 		return (dest);
+	p_dest = dest;
+	p_src = (char *)src;
+	i = 0;
 	while (num--)
-		*dest_p++ = *src_p++;
-	return (dest);
+	{
+		p_dest[i] = p_src[i];
+		i++;
+	}
+	return (p_dest);
 }

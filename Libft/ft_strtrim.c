@@ -6,7 +6,7 @@
 /*   By: donkang <donkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:12:11 by donkang           #+#    #+#             */
-/*   Updated: 2022/04/24 16:13:59 by donkang          ###   ########.fr       */
+/*   Updated: 2022/04/24 19:04:34 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	tmp = (char *)malloc(sizeof(char) * (end - start + 1));
 	if (!tmp)
 		return (NULL);
-	ft_strlcpy(tmp, &s1[start], end - start + 1);
+	ft_strlcpy(tmp, (char *)&s1[start], end - start + 1);
 	return (tmp);
 }

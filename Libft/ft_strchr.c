@@ -6,7 +6,7 @@
 /*   By: donkang <donkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 00:23:40 by donkang           #+#    #+#             */
-/*   Updated: 2022/04/16 00:27:23 by donkang          ###   ########.fr       */
+/*   Updated: 2022/04/24 18:55:09 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 char	*strchr(const char *s, int c)
 {
-	while (*s != (char)c)
-	{
-		if (*s == '\0')
-			return (NULL);
-		s++;
-	}
-	return (s);
+	int	i;
+
+	i = 0;
+	while (s[i] && s[i] != (char)c)
+		i++;
+	if (s[i] == (char)c)
+		return ((char *)s + i);
+	return (0);
 }

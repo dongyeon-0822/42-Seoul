@@ -6,7 +6,7 @@
 /*   By: donkang <donkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 16:32:57 by donkang           #+#    #+#             */
-/*   Updated: 2022/04/17 16:40:51 by donkang          ###   ########.fr       */
+/*   Updated: 2022/04/24 18:59:33 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t num)
 	i = 0;
 	p1 = (unsigned char *)s1;
 	p2 = (unsigned char *)s2;
-	while (n--)
+	while (num--)
 	{
 		if (p1[i] != p2[i])
 			return (p1[i] - p2[i]);
