@@ -6,7 +6,7 @@
 /*   By: donkang <donkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 20:42:51 by donkang           #+#    #+#             */
-/*   Updated: 2022/04/06 20:51:25 by donkang          ###   ########.fr       */
+/*   Updated: 2022/04/25 18:11:25 by donkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 			dest[i] = src[i];
 			i++;
 		}
-		dest[i] = '\0'; //size ㄱㅏ 0일 때때
+		dest[i] = '\0';
 		while (src[i])
 			i++;
 	}

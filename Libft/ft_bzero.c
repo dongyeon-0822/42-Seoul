@@ -21,5 +21,4 @@ void	ft_bzero(void *dest, size_t num)
 	tmp = (unsigned char *)dest;
 	while (i < num)
 		tmp[i++] = (unsigned char)0;
-//ㄴ	return (dest);
 }
