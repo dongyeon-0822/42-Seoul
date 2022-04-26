@@ -19,10 +19,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t num)
 	i = 0;
 	while ((s1[i] || s2[i]) && i < num)
 	{
-		if (s1[i] > s2[i])
-			return (1);
-		else if (s1[i] < s2[i])
-			return (-1);
+		if (s1[i] > s2[i] || s1[i] < s2[i])
+			return (s1[i] - s2[i]);
 		i++;
 	}
 	return (0);
