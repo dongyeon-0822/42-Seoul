@@ -15,19 +15,20 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5000
-#endif
+// # ifndef BUFFER_SIZE
+// #  define BUFFER_SIZE 5000
+// # endif
 
 char		*get_next_line(int fd);
-char		*get_line(char	*backup);
-char		*backup_next(char	*backup);
-char		*read_and_store(int fd, char *backup);
+char		*ft_readfile(int fd, char *res);
+char		*ft_getline(char *buffer);
+char		*ft_nextbuf(char *buffer);
+char		*ft_joinfree(char *buffer, char *buf);
 
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strchr(const char *string, int searchedChar);
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t elementCount, size_t elementSize);
-size_t	ft_strlen(const char *theString);
+char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strchr(const char *string, int c);
+void		ft_bzero(void *s, size_t n);
+void		*ft_calloc(size_t count, size_t size);
+size_t		ft_strlen(const char *str);
 
 #endif
